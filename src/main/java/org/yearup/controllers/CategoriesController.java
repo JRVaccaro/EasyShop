@@ -23,7 +23,6 @@ public class CategoriesController
     private ProductDao productDao;
 
 
-    // create an Autowired controller to inject the categoryDao and ProductDao
 @Autowired
 public CategoriesController(CategoryDao categoryDao, ProductDao productDao)
 {
@@ -38,7 +37,6 @@ public CategoriesController(CategoryDao categoryDao, ProductDao productDao)
         return categoryDao.getAllCategories();
     }
 
-    // add the appropriate annotation for a get action
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public Category getById(@PathVariable int id)
     {
@@ -52,7 +50,7 @@ public CategoriesController(CategoryDao categoryDao, ProductDao productDao)
     public List<Product> getProductsById(@PathVariable int categoryId)
     {
         // get a list of product by categoryId
-        return null;
+        return productDao.listByCategoryId(categoryId);
     }
 
     // add annotation to call this method for a POST action
