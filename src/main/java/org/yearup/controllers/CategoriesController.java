@@ -54,8 +54,7 @@ public CategoriesController(CategoryDao categoryDao, ProductDao productDao)
         return productDao.listByCategoryId(categoryId);
     }
 
-    // add annotation to call this method for a POST action
-    // add annotation to ensure that only an ADMIN can call this function
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping()
     public Category addCategory(@RequestBody Category category)
@@ -64,11 +63,12 @@ public CategoriesController(CategoryDao categoryDao, ProductDao productDao)
         return category;
     }
 
-    // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
-    // add annotation to ensure that only an ADMIN can call this function
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("/{id}")
     public void updateCategory(@PathVariable int id, @RequestBody Category category)
     {
         // update the category by id
+        categoryDao.update(id, category);
     }
 
 
