@@ -67,7 +67,7 @@ public CategoriesController(CategoryDao categoryDao, ProductDao productDao)
     @PutMapping("/{id}")
     public void updateCategory(@PathVariable int id, @RequestBody Category category)
     {
-        // update the category by id
+       
         categoryDao.update(id, category);
     }
 
@@ -77,7 +77,7 @@ public CategoriesController(CategoryDao categoryDao, ProductDao productDao)
     @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable int id)
     {
-        // delete the category by id
+
         categoryDao.delete(id);
     }
 }
