@@ -38,7 +38,8 @@ public CategoriesController(CategoryDao categoryDao, ProductDao productDao)
         return categoryDao.getAllCategories();
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+   // @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     public Category getById(@PathVariable int id)
     {
         // get the category by id
@@ -67,7 +68,7 @@ public CategoriesController(CategoryDao categoryDao, ProductDao productDao)
     @PutMapping("/{id}")
     public void updateCategory(@PathVariable int id, @RequestBody Category category)
     {
-       
+
         categoryDao.update(id, category);
     }
 
