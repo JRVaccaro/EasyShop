@@ -38,19 +38,14 @@ public class CategoriesController {
     @GetMapping("/{id}")
     @PreAuthorize("permitAll()")
     public Category getById(@PathVariable int id) {
-        try {
             Category category = categoryDao.getById(id);
             if (category == null) {
                 //If category is not found, respond with 404 Not Found status with message
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found");
             }
-            // get the category by id
             return category;
-        } catch (Exception e) {
-            //Handle any unexpected errors
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
-    }
+
 
     @GetMapping("{categoryId}/products")
     @PreAuthorize("permitAll()")
@@ -82,10 +77,8 @@ public class CategoriesController {
 }
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateCategory(@PathVariable int id, @RequestBody Category category) {
         try {
-
             categoryDao.update(id, category);
     } catch (Exception e) {
             //Handle any unexpected errors
