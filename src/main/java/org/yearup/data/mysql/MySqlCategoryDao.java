@@ -115,9 +115,9 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     public void update(int categoryId, Category category)
     {
         //SQL statement to update the category with specified ID
-        String sql = "UPDATE categories" +
+        String sql = "UPDATE categories " +
                 "SET name = ?, " +
-                "description = ?" +
+                "description = ? " +
                 "WHERE category_id = ?";
 
         try( Connection connection = getConnection()){

@@ -41,6 +41,7 @@ public class CategoriesController {
         try {
             Category category = categoryDao.getById(id);
             if (category == null) {
+                //If category is not found, respond with 404 Not Found status with message
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found");
             }
             // get the category by id
@@ -68,6 +69,7 @@ public class CategoriesController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public Category addCategory(@RequestBody Category category) {
         try {
 
@@ -80,6 +82,7 @@ public class CategoriesController {
 }
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateCategory(@PathVariable int id, @RequestBody Category category) {
         try {
 
@@ -95,6 +98,7 @@ public class CategoriesController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCategory(@PathVariable int id) {
         try{
             categoryDao.delete(id);
