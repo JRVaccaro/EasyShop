@@ -152,19 +152,17 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
         }
     }
 
-    private Category mapRow(ResultSet row) throws SQLException
-    {
+    private Category mapRow(ResultSet row) throws SQLException {
         int categoryId = row.getInt("category_id");
         String name = row.getString("name");
         String description = row.getString("description");
 
-        Category category = new Category()
-        {
+        Category category = new Category() {
             {
-            setCategoryId(categoryId);
-            setName(name);
-            setDescription(description);
-        }
+                setCategoryId(categoryId);
+                setName(name);
+                setDescription(description);
+            }
         };
 
         return category;

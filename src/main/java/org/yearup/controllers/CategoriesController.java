@@ -28,6 +28,7 @@ public class CategoriesController {
     }
 
     @GetMapping
+    @PreAuthorize("permitAll()")
     public List<Category> getAll() {
         // find and return all categories
         return categoryDao.getAllCategories();
@@ -35,6 +36,7 @@ public class CategoriesController {
 
     // @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     @GetMapping("/{id}")
+    @PreAuthorize("permitAll()")
     public Category getById(@PathVariable int id) {
         try {
             Category category = categoryDao.getById(id);
@@ -50,6 +52,7 @@ public class CategoriesController {
     }
 
     @GetMapping("{categoryId}/products")
+    @PreAuthorize("permitAll()")
     public List<Product> getProductsById(@PathVariable int categoryId) {
         try {
             // get a list of product by categoryId
