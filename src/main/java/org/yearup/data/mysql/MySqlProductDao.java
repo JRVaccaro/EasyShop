@@ -24,24 +24,48 @@ public class MySqlProductDao extends MySqlDaoBase implements ProductDao
         List<Product> products = new ArrayList<>();
 
         String sql = "SELECT * FROM products " +
+                //Filter by categoryId if provided or ignore if not provided
                 "WHERE (category_id = ? OR ? = -1) " +
-                "   AND (price <= ? OR ? = -1) " +
-                "   AND (color = ? OR ? = '') ";
 
+                //price >=? ensures product price is minPrice
+                //? = -1 makes it so minprice filter can be ignored if not provided
+                "AND (price >= ? OR ? = -1) " +
+                //price >=? ensures product price is maxPrice
+                //? = -1 makes it so maxPrice filter can be ignored if not provided
+                "AND (price <= ? OR ? = -1) "
+
+                //Filter by color if provided, or ignore if empty
+                + "   AND (color = ? OR ? = '') ";
+
+        //BUG-This is only checking if max price was involved, not including min price
+        // "   AND (price <= ? OR ? = -1) " +
+
+        //If categoryId wasnt given, use -1 to ignore it
         categoryId = categoryId == null ? -1 : categoryId;
+
+        //If minPrice wasnt given, use -1 to skip the filter
         minPrice = minPrice == null ? new BigDecimal("-1") : minPrice;
+
+        //If maxPrice wasnt given use -1 to skip the filter
         maxPrice = maxPrice == null ? new BigDecimal("-1") : maxPrice;
+
+        //If color wasnt given, use empty string to skip filter
         color = color == null ? "" : color;
 
         try (Connection connection = getConnection())
         {
+            //BUG in original code  statement.setBigDecimal(3, minPrice);
+            // BUG in original code statement.setBigDecimal(4, minPrice);
+
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, categoryId);
             statement.setInt(2, categoryId);
-            statement.setBigDecimal(3, minPrice);
-            statement.setBigDecimal(4, minPrice);
-            statement.setString(5, color);
-            statement.setString(6, color);
+            statement.setBigDecimal(3, minPrice); //This is for price >= ?
+            statement.setBigDecimal(4, minPrice);//This is for ? =-1
+            statement.setBigDecimal(5,  maxPrice);//This is for price <= ?
+            statement.setBigDecimal(6, maxPrice);//This is for ? =-1
+            statement.setString(7, color);
+            statement.setString(8, color);
 
             ResultSet row = statement.executeQuery();
 
