@@ -54,9 +54,7 @@ Outline potential future enhancements or functionalities you might consider addi
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
 
-- [Java Programming Tutorial](https://www.example.com)
-- [Effective Java](https://www.example.com)
-
+- https://www.youtube.com/watch?v=7lnevNCaTLQ
 ## Team Members
 
 - **Name 1** - Specific contributions or roles.
