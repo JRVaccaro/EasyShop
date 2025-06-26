@@ -9,6 +9,7 @@ import org.yearup.data.ProductDao;
 import org.yearup.data.ShoppingCartDao;
 import org.yearup.data.UserDao;
 import org.yearup.models.ShoppingCart;
+import org.yearup.models.ShoppingCartItem;
 import org.yearup.models.User;
 
 import java.security.Principal;
@@ -85,9 +86,37 @@ public class ShoppingCartController
     }
 
 
-    // add a PUT method to update an existing product in the cart - the url should be
-    // https://localhost:8080/cart/products/15 (15 is the productId to be updated)
-    // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated
+   
+    @PutMapping("{productId}/product")
+    public void updateCartItem(@PathVariable int productId, @RequestBody ShoppingCartItem cartItem, Principal principal){
+
+        try {
+            // get the currently logged in username from the principal object
+            String userName = principal.getName();
+            // Use username to find the user details in database
+            User user = userDao.getByUserName(userName);
+
+            //If user is not found, return a 404 error
+            if (user == null)
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User does not exist");
+
+            //Get user Id from user object
+            int userId = user.getId();
+
+            //Get quantity from the request body
+            int quantity = cartItem.getQuantity();
+
+            shoppingCartDao.updateCart(userId, productId, quantity);
+        }
+              catch(Exception e)
+            {
+                //If any other errors occur, return a 500 error
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+            }
+        }
+
+
+    }
 
 
     // add a DELETE method to clear all products from the current users cart
