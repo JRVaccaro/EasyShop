@@ -57,48 +57,61 @@ public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDa
         }
     }
 
-        @Override
-        public void addToCart(int userId, int productId){
-            // SQL statement to insert a new item into the shopping_cart table with quantity 1
-            String sql = "INSERT INTO shopping_cart (user_id, product_id, quantity) VALUES (?,?,?)";
+    @Override
+    public void addToCart(int userId, int productId) {
+        // SQL statement to insert a new item into the shopping_cart table with quantity 1
+        String sql = "INSERT INTO shopping_cart (user_id, product_id, quantity) VALUES (?,?,?)";
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            //Set userId
+            statement.setInt(1, userId);
+            //Set product Id
+            statement.setInt(2, productId);
+            //Set the quantity to 1, because when a product is first added to the cart,initial quantity should start at one by default
+            statement.setInt(3, 1);
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        }
+        public void deleteInCart ( int userId){
+            String sql = "DELETE FROM shopping_cart WHERE user_id = ?";
 
             try (Connection connection = getConnection();
                  PreparedStatement statement = connection.prepareStatement(sql)) {
 
-                //Set userId
                 statement.setInt(1, userId);
-                //Set product Id
-                statement.setInt(2, productId);
-                //Set the quantity to 1, because when a product is first added to the cart,initial quantity should start at one by default
-                statement.setInt(3, 1);
 
                 statement.executeUpdate();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
-
             }
+
         }
 
 
         @Override
-                public void updateCart(int userId, int productId, int quantity){
-        String sql = "UPDATE shopping_cart SET quantity = ? WHERE user_id = ? And product_id = ?";
+        public void updateCart ( int userId, int productId, int quantity){
+            String sql = "UPDATE shopping_cart SET quantity = ? WHERE user_id = ? And product_id = ?";
 
-        try(Connection connection = getConnection()){
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, quantity);
-            statement.setInt(2, userId);
-            statement.setInt(3,productId);
+            try (Connection connection = getConnection()) {
+                PreparedStatement statement = connection.prepareStatement(sql);
+                statement.setInt(1, quantity);
+                statement.setInt(2, userId);
+                statement.setInt(3, productId);
 
-            statement.executeUpdate();
+                statement.executeUpdate();
 
-        }catch (SQLException e) {
-            throw new RuntimeException(e);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
-    }
         //Helper method to build a ShoppingCartItem from a result row
         protected static ShoppingCartItem mapRowToCartItem (ResultSet row) throws SQLException {
-        //Extract product details from the current row
+            //Extract product details from the current row
             int productId = row.getInt("product_id");
             String name = row.getString("name");
             BigDecimal price = row.getBigDecimal("price");
