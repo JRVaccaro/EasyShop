@@ -56,6 +56,14 @@ public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDa
 
         }
 
+        @Override
+        public void addToCart (int userId, int productId){
+
+        }
+        @Override
+                public void updateCart(int userId, int productId){
+
+        }
     }
         //Helper method to build a ShoppingCartItem from a result row
         protected static ShoppingCartItem mapRowToCartItem (ResultSet row) throws SQLException {
