@@ -110,7 +110,7 @@ public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDa
             }
         }
         //Helper method to build a ShoppingCartItem from a result row
-        protected static ShoppingCartItem mapRowToCartItem (ResultSet row) throws SQLException {
+        private static ShoppingCartItem mapRowToCartItem (ResultSet row) throws SQLException {
             //Extract product details from the current row
             int productId = row.getInt("product_id");
             String name = row.getString("name");
