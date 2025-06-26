@@ -76,6 +76,7 @@ public class ShoppingCartController
             //Get user Id from user object
             int userId = user.getId();
 
+            //
             shoppingCartDao.addToCart(userId, productId);
         }
         catch(Exception e)
@@ -86,7 +87,7 @@ public class ShoppingCartController
     }
 
 
-   
+
     @PutMapping("{productId}/product")
     public void updateCartItem(@PathVariable int productId, @RequestBody ShoppingCartItem cartItem, Principal principal){
 
@@ -106,6 +107,7 @@ public class ShoppingCartController
             //Get quantity from the request body
             int quantity = cartItem.getQuantity();
 
+            //Update the cart with new quantity
             shoppingCartDao.updateCart(userId, productId, quantity);
         }
               catch(Exception e)
@@ -116,10 +118,34 @@ public class ShoppingCartController
         }
 
 
-    }
-
 
     // add a DELETE method to clear all products from the current users cart
     // https://localhost:8080/cart
+@DeleteMapping("")
+public void clearCart(Principal principal){
+    try {
+        // get the currently logged in username from the principal object
+        String userName = principal.getName();
+        // Use username to find the user details in database
+        User user = userDao.getByUserName(userName);
+
+        //If user is not found, return a 404 error
+        if (user == null)
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User does not exist");
+
+        //Get user Id from user object
+        int userId = user.getId();
+
+        //Delete all items in cart for user
+        shoppingCartDao.deleteInCart(userId);
+    }
+              catch(Exception e)
+        {
+            //If any other errors occur, return a 500 error
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+        }
+    }
+
 
 }
+
