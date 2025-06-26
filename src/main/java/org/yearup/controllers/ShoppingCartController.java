@@ -61,7 +61,7 @@ public class ShoppingCartController
     }
 
 
-    @PostMapping ("{productId}/products")//Post method to add a product to cart
+    @PostMapping ("/products/{productId}")//Post method to add a product to cart
     public void addToUserCart(@PathVariable int productId, Principal principal){
         try{
             // get the currently logged in username from the principal object
@@ -88,7 +88,7 @@ public class ShoppingCartController
 
 
 
-    @PutMapping("{productId}/product")
+    @PutMapping("/products/{productId}")
     public void updateCartItem(@PathVariable int productId, @RequestBody ShoppingCartItem cartItem, Principal principal){
 
         try {
