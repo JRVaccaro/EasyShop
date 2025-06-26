@@ -59,7 +59,7 @@ public class ShoppingCartController
         }
     }
 
-    // https://localhost:8080/cart/products/15 (15 is the productId to be added
+
     @PostMapping ("{productId}/products")//Post method to add a product to cart
     public void addToUserCart(@PathVariable int productId, Principal principal){
         try{
@@ -75,7 +75,7 @@ public class ShoppingCartController
             //Get user Id from user object
             int userId = user.getId();
 
-            shoppingCartDao.//I should probably make some methods in ShoppingCartDao (userId, productId)
+            shoppingCartDao.addToCart(userId, productId);
         }
         catch(Exception e)
         {
