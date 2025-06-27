@@ -55,6 +55,13 @@ Outline potential future enhancements or functionalities you might consider addi
 List resources such as tutorials, articles, or documentation that helped you during the project.
 
 - https://www.youtube.com/watch?v=7lnevNCaTLQ
+- https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/mock/mockito/MockBean.html
+- https://www.youtube.com/watch?v=jqwZthuBmZY&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E
+- https://www.youtube.com/watch?v=HYoo6rHbHzM&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=2
+- https://www.youtube.com/watch?v=BZBFw6fBeIU&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=8
+- https://www.youtube.com/watch?v=Sixeh7zjtOY&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=9
+- https://www.youtube.com/watch?v=4pwgtA5j1Ks&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=10
+- https://www.youtube.com/watch?v=7frnXmdJF98&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=11
 ## Team Members
 
 - **Name 1** - Specific contributions or roles.
