@@ -100,6 +100,7 @@ Follow these steps to get your application running within IntelliJ IDEA:
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 ## 🚀 Future Versions
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+
 While the core features of EasyShop are fully functional, there are still some exciting upgrades planned for the future:
 
 🔐 Login Functionality: Right now, login works via Postman for API testing, but the login option on the website itself isn't wired up yet. Future updates will connect the front-end login form to our authentication system so users can log in directly from the site.
