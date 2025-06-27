@@ -56,14 +56,14 @@ public class ShoppingCartControllerTest
 
 
     // Simulates a logged-in user with username "gary" and role "USER"
-    @Test
-    @WithMockUser(username = "gary", roles = {"USER"})
+     @Test
+    @WithMockUser(username = "tater", roles = {"USER"})
     void clearCart_ShouldReturn200() throws Exception
     {
         // Creating a fake user object to simulate the userDao behavior
         User user = new User();
         user.setId(1);
-        user.setUsername("gary");
+        user.setUsername("tater");
 
 
         //Telling Mockito to return the fake user when getByUserName "gary" is called
