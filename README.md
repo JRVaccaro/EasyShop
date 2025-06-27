@@ -10,6 +10,7 @@ This project lets logged-in users easily add, update, and manage products in the
 
 ## Interesting Code Snippet
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+
 @Test
 @WithMockUser(username = "tater", roles = {"USER"})
 void clearCart_ShouldReturn200() throws Exception {
@@ -103,9 +104,8 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 While the core features of EasyShop are fully functional, there are still some exciting upgrades planned for the future:
 
-🔐 Login Functionality: Right now, login works via Postman for API testing, but the login option on the website itself isn't wired up yet. Future updates will connect the front-end login form to our authentication system so users can log in directly from the site.
 
-🛒 Cart Persistence on Logout: We'll look into persisting the shopping cart across sessions so users don't lose their items when they log out.
+🛒 Cart Check out: Allowing customers to be able to check out.
 
 📦 Order History: Add a page where users can view past orders and receipts.
 
