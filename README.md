@@ -1,6 +1,7 @@
 # Easy Shop
-
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 ## 🚀Description of the Project🚀
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 
 Welcome to EasyShop! Your go-to shopping cart API built with Java & Spring Boot! 🛒✨
 
@@ -8,6 +9,7 @@ This project lets logged-in users easily add, update, and manage products in the
 
 
 ## Interesting Code Snippet
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 @Test
 @WithMockUser(username = "tater", roles = {"USER"})
 void clearCart_ShouldReturn200() throws Exception {
@@ -31,9 +33,7 @@ Shows how to test a secured DELETE endpoint using MockMvc 🎯
 
 
 ## User Stories
-
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
-
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 - As a user, I want to view the categories and their products, so that I can look through the catalog.
 - As an admin, I want to add to the categories, so that I can expand the catalog with new product types for users to browse.
 - As a admin I want to delete categories, so that I can keep it up to date.
@@ -52,7 +52,7 @@ List the user stories that guided the development of your application. Format th
 
 
 ## Setup
-
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 Getting EasyShop up and running is super easy! Just follow these steps and you’ll be ready to roll in no time. 🚀
 1. Clone the repo
    git clone https://github.com/your-username/easyshop.git
@@ -70,11 +70,12 @@ Use the token to access cart endpoints and start adding those products! 🛍️
 
 
 ### Prerequisites
-
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 - IntelliJ IDEA: Ensure you have IntelliJ IDEA installed, which you can download from [here](https://www.jetbrains.com/idea/download/).
 - Java SDK: Make sure Java SDK is installed and configured in IntelliJ.
 
 ### Running the Application in IntelliJ
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 
 Follow these steps to get your application running within IntelliJ IDEA:
 
@@ -85,43 +86,41 @@ Follow these steps to get your application running within IntelliJ IDEA:
 5. Right-click on the file and select 'Run 'EasyshopApplication.main()'' to start the application.
 
 ## Technologies Used
-
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 - Java 17
 - Intellij IDEA
 - PostMan
 - Spring Boot
 
 ## Demo
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 ![EasyShopDemo - Made with Clipchamp.gif](Demo/EasyShopDemo%20-%20Made%20with%20Clipchamp.gif)
 
-## Future Work
+![website demo.gif](Demo/website%20demo.gif)
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+## 🚀 Future Versions
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+While the core features of EasyShop are fully functional, there are still some exciting upgrades planned for the future:
 
-Outline potential future enhancements or functionalities you might consider adding:
+🔐 Login Functionality: Right now, login works via Postman for API testing, but the login option on the website itself isn't wired up yet. Future updates will connect the front-end login form to our authentication system so users can log in directly from the site.
 
-- Additional feature to be developed.
-- Improvement of current functionalities.
+🛒 Cart Persistence on Logout: We'll look into persisting the shopping cart across sessions so users don't lose their items when they log out.
 
-## Resources
+📦 Order History: Add a page where users can view past orders and receipts.
 
-List resources such as tutorials, articles, or documentation that helped you during the project.
+🌈 UI Polish: Improve layout, add responsive design, and spice up the visuals with better styling.
 
-- https://www.youtube.com/watch?v=7lnevNCaTLQ
-- https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/mock/mockito/MockBean.html
-- https://www.youtube.com/watch?v=jqwZthuBmZY&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E
-- https://www.youtube.com/watch?v=HYoo6rHbHzM&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=2
-- https://www.youtube.com/watch?v=BZBFw6fBeIU&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=8
-- https://www.youtube.com/watch?v=Sixeh7zjtOY&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=9
-- https://www.youtube.com/watch?v=4pwgtA5j1Ks&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=10
-- https://www.youtube.com/watch?v=7frnXmdJF98&list=PL82C6-O4XrHcg8sNwpoDDhcxUCbFy855E&index=11
+## 📚 Resources
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+- [Spring Boot MockBean Documentation](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/mock/mockito/MockBean.html)
+- [Spring Boot Controller Testing Tutorial (YouTube)](https://www.youtube.com/watch?v=7lnevNCaTLQ)
+- [Ray Maroun’s GitHub](https://github.com/RayMaroun)
+- [ChatGPT (OpenAI)](https://chat.openai.com/)
 ## Team Members
-
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+- **Julianna Vaccaro** - Developed this project as part of my Java programming course 💻 a hands-on way to sharpen my skills using Spring Boot, REST APIs, and real-world project structure. It’s been a great opportunity to practice, debug, and build something functional 
 
 ## Thanks
-
-Express gratitude towards those who provided help, guidance, or resources:
-
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.
- 
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+- Thank you to my instructor, Raymond, for providing skeleton code and your continuous support and guidance throughout the project.
+- Thank you to my peers for always being willing to listen and support me when I needed it.
