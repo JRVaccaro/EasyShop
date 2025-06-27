@@ -140,7 +140,7 @@ public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDa
                 throw new RuntimeException(e);
             }
         }
-        
+
         //Helper method to build a ShoppingCartItem from a result row
         private static ShoppingCartItem mapRowToCartItem (ResultSet row) throws SQLException {
             //Extract product details from the current row

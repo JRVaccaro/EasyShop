@@ -17,8 +17,7 @@ import java.security.Principal;
 @PreAuthorize("isAuthenticated()") //logged in user option. Also all methods in this class will have this
 @CrossOrigin
 @RequestMapping("cart")
-public class ShoppingCartController
-{
+public class ShoppingCartController {
     // a shopping cart requires
     @Autowired
     private ShoppingCartDao shoppingCartDao;
@@ -33,8 +32,7 @@ public class ShoppingCartController
 
 
     @GetMapping("")//Makes method for logged in users only. Handles GET requests
-    public ShoppingCart getCart(Principal principal)
-    {
+    public ShoppingCart getCart(Principal principal) {
         try {
             // get the currently logged in username from the principal object
             String userName = principal.getName();
@@ -52,18 +50,16 @@ public class ShoppingCartController
             // use the shoppingcartDao to get all items in the cart and return the cart
             return shoppingCartDao.getByUserId(userId);
 
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             //If any other errors occur, return a 500 error
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
     }
 
 
-    @PostMapping ("/products/{productId}")//Post method to add a product to cart
-    public void addToUserCart(@PathVariable int productId, Principal principal){
-        try{
+    @PostMapping("/products/{productId}")//Post method to add a product to cart
+    public ShoppingCart addToUserCart(@PathVariable int productId, Principal principal) {
+        try {
             // get the currently logged in username from the principal object
             String userName = principal.getName();
             // Use username to find the user details in database
@@ -76,20 +72,18 @@ public class ShoppingCartController
             //Get user Id from user object
             int userId = user.getId();
 
-            //
-            shoppingCartDao.addToCart(userId, productId);
-        }
-        catch(Exception e)
-        {
+
+            return shoppingCartDao.addToCart(userId, productId);
+        } catch (Exception e) {
             //If any other errors occur, return a 500 error
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
     }
 
 
-
+    //Update quantity
     @PutMapping("/products/{productId}")
-    public void updateCartItem(@PathVariable int productId, @RequestBody ShoppingCartItem cartItem, Principal principal){
+    public ShoppingCart updateCartItem(@PathVariable int productId, @RequestBody ShoppingCartItem cartItem, Principal principal) {
 
         try {
             // get the currently logged in username from the principal object
@@ -108,40 +102,58 @@ public class ShoppingCartController
             int quantity = cartItem.getQuantity();
 
             //Update the cart with new quantity
-            shoppingCartDao.updateCart(userId, productId, quantity);
-        }
-              catch(Exception e)
-            {
-                //If any other errors occur, return a 500 error
-                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
-            }
-        }
-
-@DeleteMapping("")
-public void clearCart(Principal principal){
-    try {
-        // get the currently logged in username from the principal object
-        String userName = principal.getName();
-        // Use username to find the user details in database
-        User user = userDao.getByUserName(userName);
-
-        //If user is not found, return a 404 error
-        if (user == null)
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User does not exist");
-
-        //Get user Id from user object
-        int userId = user.getId();
-
-        //Delete all items in cart for user
-        shoppingCartDao.deleteInCart(userId);
-    }
-              catch(Exception e)
-        {
+            return shoppingCartDao.updateCart(userId, productId, quantity);
+        } catch (Exception e) {
             //If any other errors occur, return a 500 error
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
         }
     }
 
+    //Clear cart, return empty cart
+    @DeleteMapping("")
+    public ShoppingCart clearCart(Principal principal) {
+        try {
+            // get the currently logged in username from the principal object
+            String userName = principal.getName();
+            // Use username to find the user details in database
+            User user = userDao.getByUserName(userName);
 
+            //If user is not found, return a 404 error
+            if (user == null)
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User does not exist");
+
+            //Get user Id from user object
+            int userId = user.getId();
+
+            //Delete all items in cart for user
+            return shoppingCartDao.clearCart(userId);
+        } catch (Exception e) {
+            //If any other errors occur, return a 500 error
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+        }
+    }
+
+    @DeleteMapping("/products/{productId}")
+    public ShoppingCart removeItemFromCart(@PathVariable int productId, Principal principal) {
+        try {
+            // get the currently logged in username from the principal object
+            String userName = principal.getName();
+            // Use username to find the user details in database
+            User user = userDao.getByUserName(userName);
+
+            //If user is not found, return a 404 error
+            if (user == null)
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User does not exist");
+
+            //Get user Id from user object
+            int userId = user.getId();
+
+            return shoppingCartDao.removeItemFromCart(userId, productId);
+
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Oops... our bad.");
+        }
+
+    }
 }
 
