@@ -15,4 +15,7 @@ void updateCart (int userId, int productId, int quantity);
 
 //Remove items from cart
 void deleteInCart(int userId);
+
+//Clear all items from cart
+void clearCart(int userId);
 }
