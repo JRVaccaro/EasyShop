@@ -8,14 +8,14 @@ public interface ShoppingCartDao
     ShoppingCart getByUserId(int userId);
 
 //Add products to cart
-void addToCart (int userId, int productId);
+ShoppingCart addToCart (int userId, int productId);
 
 //Update quantity in cart
-void updateCart (int userId, int productId, int quantity);
+ShoppingCart updateCart (int userId, int productId, int quantity);
 
 //Remove items from cart
-void deleteInCart(int userId);
+ShoppingCart deleteInCart(int userId);
 
 //Clear all items from cart
-void clearCart(int userId);
+ShoppingCart clearCart(int userId);
 }
