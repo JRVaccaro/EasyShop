@@ -13,8 +13,8 @@ ShoppingCart addToCart (int userId, int productId);
 //Update quantity in cart
 ShoppingCart updateCart (int userId, int productId, int quantity);
 
-//Remove items from cart
-ShoppingCart deleteInCart(int userId);
+//Remove an item from cart
+ShoppingCart removeItemFromCart(int userId, int productId);
 
 //Clear all items from cart
 ShoppingCart clearCart(int userId);
