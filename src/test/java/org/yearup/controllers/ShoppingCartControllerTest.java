@@ -67,7 +67,7 @@ public class ShoppingCartControllerTest
 
 
         //Telling Mockito to return the fake user when getByUserName "gary" is called
-        Mockito.when(userDao.getByUserName("gary")).thenReturn(user);
+        Mockito.when(userDao.getByUserName("tater")).thenReturn(user);
 
         // Act & Assert, use the DELETE in cart and get a 200 OK status
         mockMvc.perform(delete("/cart"))

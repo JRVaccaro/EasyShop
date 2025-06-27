@@ -27,8 +27,7 @@ public class OrdersController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Order createOrder(@RequestBody Order order, Principal principal){
+    public Order createOrder(Order order, Principal principal){
 
         String userName = principal.getName();
         User user = userDao.getByUserName(userName);

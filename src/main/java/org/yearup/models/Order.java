@@ -1,5 +1,7 @@
 package org.yearup.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -12,6 +14,9 @@ public class Order {
     private String state;
     private String zip;
     private BigDecimal shippingAmount;
+
+
+
 
     public int getOrderId() {
         return orderId;
